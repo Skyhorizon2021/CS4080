@@ -87,7 +87,13 @@ int main()
     int m1_rows, m1_cols;
     printf("Enter rows and columns of matrix 1: ");
     scanf("%d %d", &m1_rows, &m1_cols);
-
+    //set matrix size limit
+    while((m1_rows > 100) || (m1_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 1: ");
+        scanf("%d %d", &m1_rows, &m1_cols);
+    }
     //dynamic allocation for matrix 1
     float **m1 = (float**)malloc(m1_rows * sizeof(float*));
     for(int i=0; i<m1_rows; i++)
@@ -104,7 +110,13 @@ int main()
     int m2_rows, m2_cols;
     printf("Enter rows and columns of matrix 2: ");
     scanf("%d %d", &m2_rows, &m2_cols);
-
+    //set matrix size limit      
+    while((m2_rows > 100) || (m2_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 2: ");
+        scanf("%d %d", &m2_rows, &m2_cols);
+    }
     //dynamic allocation for matrix 2
     float** m2 = (float**)malloc(m2_rows * sizeof(float*));
     for(int i=0; i<m2_rows; i++)

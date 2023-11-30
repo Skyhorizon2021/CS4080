@@ -88,18 +88,31 @@ int main()
     
     printf("Enter rows and columns of matrix 1: ");
     scanf("%d %d", &m1_rows, &m1_cols);
+    //set matrix size limit
+    while((m1_rows > 100) || (m1_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 1: ");
+        scanf("%d %d", &m1_rows, &m1_cols);
+    }
     float m1[m1_rows][m1_cols];
 
     //Enter elements in matrix 1
     printf("Enter elements of matrix 1:\n");
     getELements(m1_rows,m1_cols,m1);
-    
 
     //initilize matrix 2
     int m2_rows,m2_cols;
 
     printf("Enter rows and columns of matrix 2: ");
     scanf("%d %d", &m2_rows, &m2_cols);
+    //set matrix size limit      
+    while((m2_rows > 100) || (m2_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 2: ");
+        scanf("%d %d", &m2_rows, &m2_cols);
+    }
     float m2[m2_rows][m2_cols];
 
     //Enter elements in matrix 2

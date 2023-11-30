@@ -132,6 +132,13 @@ int main()
     int m1_rows, m1_cols;
     cout << "Enter rows and columns of matrix 1: ";
     cin >> m1_rows >> m1_cols;
+    //set matrix size limit
+    while((m1_rows > 100) || (m1_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 1: ");
+        cin >> m1_rows >> m1_cols;
+    }
 
     //dynamic allocation for matrix 1
     Matrix m1 = Matrix(m1_rows,m1_cols);
@@ -145,7 +152,13 @@ int main()
     int m2_rows, m2_cols;
     cout << "Enter rows and columns of matrix 2: ";
     cin >> m2_rows >> m2_cols;
-
+    //set matrix size limit
+    while((m2_rows > 100) || (m2_cols >100))
+    {   
+        printf("Matrix size limit exceed 100x100!\n");
+        printf("Enter rows and columns of matrix 2: ");
+        cin >> m2_rows >> m2_cols;
+    }
     //dynamic allocation for matrix 2
     Matrix m2 = Matrix(m2_rows,m2_cols);
 
@@ -212,10 +225,18 @@ int main()
         //Enter 2 new matrices
         else if(choice == 4)
         {
+            srand(time(0));
             //initialize matrix 1
             int m1_rows, m1_cols;
             cout << "Enter rows and columns of matrix 1: ";
             cin >> m1_rows >> m1_cols;
+            //set matrix size limit
+            while((m1_rows > 100) || (m1_cols >100))
+            {   
+                printf("Matrix size limit exceed 100x100!\n");
+                printf("Enter rows and columns of matrix 1: ");
+                cin >> m1_rows >> m1_cols;
+            }
 
             //dynamic allocation for matrix 1
             Matrix m1 = Matrix(m1_rows,m1_cols);
@@ -223,18 +244,26 @@ int main()
             //Enter elements in matrix 1
             printf("Enter elements of matrix 1:\n");
             m1.getElements();
+            m1.print_matrix();
 
             //initialize matrix 2
             int m2_rows, m2_cols;
             cout << "Enter rows and columns of matrix 2: ";
             cin >> m2_rows >> m2_cols;
-
+            //set matrix size limit
+            while((m2_rows > 100) || (m2_cols >100))
+            {   
+                printf("Matrix size limit exceed 100x100!\n");
+                printf("Enter rows and columns of matrix 2: ");
+                cin >> m2_rows >> m2_cols;
+            }
             //dynamic allocation for matrix 2
             Matrix m2 = Matrix(m2_rows,m2_cols);
 
             //Enter elements in matrix 2
             printf("Enter elements of matrix 2:\n");
             m2.getElements();
+            m2.print_matrix();
         }
         //menu & operation selection
         print_menu();
