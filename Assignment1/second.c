@@ -71,7 +71,6 @@ void mul_matrix(int row1, int col1_row2, int col2, float **matrix1, float **matr
             }
             value = 0;
         }
-        
     }
 }
 //function to print menu
