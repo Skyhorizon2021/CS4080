@@ -17,12 +17,14 @@ public:
     {
         return row;
     }
+    //function to print matrix
     void print_matrix()
     {
         cout << "Row - " << row;
         cout << "Column - " << col;
 
     }
+    //Matrix constructor function
     Matrix(int Row, int Col)
     {
         row = Row;
