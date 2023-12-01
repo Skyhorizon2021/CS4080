@@ -1,3 +1,7 @@
+/*
+Name: Loc Nguyen
+Program Purpose: Add, subtract, multiply 2 matrices using pointer to pointer and new
+*/
 #include <iostream>
 #include <cmath>
 #include <random>
