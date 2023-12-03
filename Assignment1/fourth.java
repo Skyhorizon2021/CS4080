@@ -31,8 +31,8 @@ public class fourth {
         //Enter elements into matrix 1
         //System.out.println("Enter elements of matrix 1: ");
         m1.getElements();
-        System.out.println("\nMatrix 1:");
-        m1.printMatrix();
+        //System.out.println("\nMatrix 1:");
+        //m1.printMatrix();
         //initialize matrix 2
         System.out.println("Enter rows and columns for matrix 2: ");
         int m2_row = userInput.nextInt();
@@ -48,8 +48,8 @@ public class fourth {
         //Enter elements into matrix 2
         //System.out.println("Enter elements of matrix 2: ");
         m2.getElements();
-        System.out.println("\nMatrix 2:");
-        m2.printMatrix();
+        // System.out.println("\nMatrix 2:");
+        // m2.printMatrix();
 
         //print menu and choice selection
         printMenu();
@@ -128,8 +128,8 @@ public class fourth {
                 //Enter elements into matrix 1
                 //System.out.println("Enter elements of matrix 1: ");
                 m1.getElements();
-                System.out.println("\nMatrix 1:");
-                m1.printMatrix();
+                // System.out.println("\nMatrix 1:");
+                // m1.printMatrix();
                 //initialize matrix 2
                 System.out.println("Enter rows and columns for matrix 2: ");
                 m2_row = userInput.nextInt();
@@ -147,8 +147,8 @@ public class fourth {
                 //Enter elements into matrix 2
                 //System.out.println("Enter elements of matrix 2: ");
                 m2.getElements();
-                System.out.println("\nMatrix 2:");
-                m2.printMatrix();
+                // System.out.println("\nMatrix 2:");
+                // m2.printMatrix();
             }
             printMenu();
             choice = userInput.nextInt();

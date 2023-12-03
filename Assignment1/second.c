@@ -86,8 +86,10 @@ void print_menu()
 
 int main()
 {
-    int size_limit = 1000;
+    int size_limit = 100;
     srand(time(NULL));
+    struct timespec res;
+    long start,end;
     //initialize matrix 1
     int m1_rows, m1_cols;
     printf("Enter rows and columns of matrix 1: ");
@@ -109,7 +111,7 @@ int main()
     //Enter elements in matrix 1
     //printf("Enter elements of matrix 1:\n");
     getELements(m1_rows,m1_cols,&m1);
-    printf("\nMatrix 1:\n");
+    //printf("\nMatrix 1:\n");
     //print_matrix(m1_rows,m1_cols,m1);
     
     //initialize matrix 2
@@ -131,9 +133,9 @@ int main()
     }
 
     //Enter elements in matrix 2
-    printf("Enter elements of matrix 2:\n");
+    //printf("Enter elements of matrix 2:\n");
     getELements(m2_rows,m2_cols,&m2);
-    printf("\nMatrix 2:\n");
+    //printf("\nMatrix 2:\n");
     //print_matrix(m2_rows,m2_cols,m2);
     //menu & operation selection
     print_menu();
@@ -198,15 +200,19 @@ int main()
                 {
                     *(product_matrix+i) = (float*)malloc(m2_cols * sizeof(float));
                 }
-                clock_t timeStart, timeEnd;
-                double executionTime;
-                timeStart = clock();
+                // clock_t timeStart, timeEnd;
+                // double executionTime;
+                // timeStart = clock();
+                clock_gettime(CLOCK_REALTIME,&res);
+                start = res.tv_nsec;
                 mul_matrix(m1_rows,m2_rows,m2_cols,m1,m2,product_matrix);
-                timeEnd = clock();
-                executionTime = ((double)(timeEnd - timeStart)) / CLOCKS_PER_SEC;
+                clock_gettime(CLOCK_REALTIME,&res);
+                end = res.tv_nsec;
+                // timeEnd = clock();
+                // executionTime = ((double)(timeEnd - timeStart)) / CLOCKS_PER_SEC;
                 printf("\nOutput Matrix:\n");
-                //print_matrix(m1_rows,m2_cols,product_matrix);
-                printf("Execution time(ns): %f",&executionTime);
+                print_matrix(m1_rows,m2_cols,product_matrix);
+                printf("Execution time(ns): %lu",end-start);
             }
             else
             {

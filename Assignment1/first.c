@@ -4,15 +4,19 @@
 //Have functions to do operations of addition, subtraction, and multiplication 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //fucntion to get elements from user
 void getELements(int row, int col,float matrix[row][col])
 {
+    float random = (rand() % 100) +1;
     for(int i=0;i<row;i++)
     {
         for(int j=0;j<col;j++)
         {
-            scanf("%f",&matrix[i][j]);
+            //scanf("%f",&matrix[i][j]);
+            matrix[i][j] = random;
+            random = (rand() % 100)+1;
         }
     }
 }
@@ -61,6 +65,7 @@ void mul_matrix(int row1, int col1_row2, int col2, float matrix1[row1][col1_row2
 //function to print menu
 void print_menu()
 {
+
     //menu & operation selection
     printf("\n----- Select an operation -----\n(1) Addition\n(2) Subtraction\n(3) Multiplication\n(4) Enter two new matrices\n(5) Exit");
     printf("\nEnter your choice: ");
@@ -83,13 +88,18 @@ void print_matrix(int row, int col, float matrix[row][col])
 //main function
 int main()
 {
+    int size_limit = 100;
+    srand(time(NULL));
+    struct timespec res;
+    long start,end;
+    
     //initialize matrix 1
     int m1_rows, m1_cols;
     
     printf("Enter rows and columns of matrix 1: ");
     scanf("%d %d", &m1_rows, &m1_cols);
     //set matrix size limit
-    while((m1_rows > 100) || (m1_cols >100))
+    while((m1_rows > size_limit) || (m1_cols > size_limit))
     {   
         printf("Matrix size limit exceed 100x100!\n");
         printf("Enter rows and columns of matrix 1: ");
@@ -98,7 +108,7 @@ int main()
     float m1[m1_rows][m1_cols];
 
     //Enter elements in matrix 1
-    printf("Enter elements of matrix 1:\n");
+    //printf("Enter elements of matrix 1:\n");
     getELements(m1_rows,m1_cols,m1);
 
     //initilize matrix 2
@@ -107,7 +117,7 @@ int main()
     printf("Enter rows and columns of matrix 2: ");
     scanf("%d %d", &m2_rows, &m2_cols);
     //set matrix size limit      
-    while((m2_rows > 100) || (m2_cols >100))
+    while((m2_rows > size_limit) || (m2_cols >size_limit))
     {   
         printf("Matrix size limit exceed 100x100!\n");
         printf("Enter rows and columns of matrix 2: ");
@@ -116,7 +126,7 @@ int main()
     float m2[m2_rows][m2_cols];
 
     //Enter elements in matrix 2
-    printf("Enter elements of matrix 2:\n");
+    //printf("Enter elements of matrix 2:\n");
     getELements(m2_rows,m2_cols,m2);
 
 
@@ -167,8 +177,18 @@ int main()
             if (m1_cols == m2_rows)
             {
                 float product_matrix[m1_rows][m2_cols];
+                // clock_t start, end;
+                // double executeTime;
+                // start = clock();
+                clock_gettime(CLOCK_REALTIME,&res);
+                start = res.tv_nsec;
                 mul_matrix(m1_rows,m2_rows,m2_cols,m1,m2,product_matrix);
+                clock_gettime(CLOCK_REALTIME,&res);
+                end = res.tv_nsec;
+                // end = clock() - start;
+                // executeTime = (((double)end)/CLOCKS_PER_SEC)*1000000000;
                 print_matrix(m1_rows,m2_cols,product_matrix);
+                printf("Execution time for matrix multiplication: %lu",end-start);
             }
             else
             {
@@ -182,20 +202,32 @@ int main()
             //initilize matrix 1
             printf("Enter rows and columns of matrix 1: ");
             scanf("%d %d", &m1_rows, &m1_cols);
+            while((m1_rows > size_limit) || (m1_cols >size_limit))
+            {   
+                printf("Matrix size limit exceed 100x100!\n");
+                printf("Enter rows and columns of matrix 1: ");
+                scanf("%d %d", &m1_rows, &m1_cols);
+            }
             float m1[m1_rows][m1_cols];
 
             //Enter elements in matrix 1
-            printf("Enter elements of matrix 1:\n");
+            //printf("Enter elements of matrix 1:\n");
             getELements(m1_rows,m1_cols,m1);
             
 
             //initilize matrix 2
             printf("Enter rows and columns of matrix 2: ");
             scanf("%d %d", &m2_rows, &m2_cols);
+            while((m2_rows > size_limit) || (m2_cols >size_limit))
+            {   
+                printf("Matrix size limit exceed 100x100!\n");
+                printf("Enter rows and columns of matrix 2: ");
+                scanf("%d %d", &m2_rows, &m2_cols);
+            }
             float m2[m2_rows][m2_cols];
 
             //Enter elements in matrix 2
-            printf("Enter elements of matrix 2:\n");
+            //printf("Enter elements of matrix 2:\n");
             getELements(m2_rows,m2_cols,m2);
 
             

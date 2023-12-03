@@ -6,8 +6,10 @@ Program Purpose: Add, subtract, multiply 2 matrices using pointer to pointer and
 #include <cmath>
 #include <random>
 #include <time.h>
+#include <chrono>
 using namespace std;
 
+typedef chrono::high_resolution_clock Clock;
 //fucntion to get random float
 float randomFloat()
 {
@@ -132,12 +134,13 @@ void print_menu()
 int main()
 {
     srand(time(0));
+    int size_limit = 100;
     //initialize matrix 1
     int m1_rows, m1_cols;
     cout << "Enter rows and columns of matrix 1: ";
     cin >> m1_rows >> m1_cols;
     //set matrix size limit
-    while((m1_rows > 100) || (m1_cols >100))
+    while((m1_rows > size_limit) || (m1_cols >size_limit))
     {   
         printf("Matrix size limit exceed 100x100!\n");
         printf("Enter rows and columns of matrix 1: ");
@@ -148,16 +151,16 @@ int main()
     Matrix m1 = Matrix(m1_rows,m1_cols);
     
     //Enter elements in matrix 1
-    printf("Enter elements of matrix 1:\n");
+    //printf("Enter elements of matrix 1:\n");
     m1.getElements();
-    m1.print_matrix();
+    //m1.print_matrix();
 
     //initialize matrix 2
     int m2_rows, m2_cols;
     cout << "Enter rows and columns of matrix 2: ";
     cin >> m2_rows >> m2_cols;
     //set matrix size limit
-    while((m2_rows > 100) || (m2_cols >100))
+    while((m2_rows > size_limit) || (m2_cols > size_limit))
     {   
         printf("Matrix size limit exceed 100x100!\n");
         printf("Enter rows and columns of matrix 2: ");
@@ -167,9 +170,9 @@ int main()
     Matrix m2 = Matrix(m2_rows,m2_cols);
 
     //Enter elements in matrix 2
-    printf("Enter elements of matrix 2:\n");
+    //printf("Enter elements of matrix 2:\n");
     m2.getElements();
-    m2.print_matrix();
+    //m2.print_matrix();
     
     //menu & operation selection
     print_menu();
@@ -217,9 +220,14 @@ int main()
             if (m1_cols == m2_rows)
             {
                 //dynamic allocation for product matrix
-                Matrix productMatrix = Matrix(m1_rows,m2_cols); 
+                Matrix productMatrix = Matrix(m1_rows,m2_cols);
+                //time measure
+                auto start = Clock::now();
                 productMatrix = m1 * m2;
+                auto end = Clock::now();
                 productMatrix.print_matrix();
+                
+                cout << "Execution time(ns): " << chrono::duration_cast<chrono::nanoseconds>(end-start).count()<<endl;
             }
             else
             {
@@ -230,15 +238,13 @@ int main()
         else if(choice == 4)
         {
             srand(time(0));
-            //initialize matrix 1
-            int m1_rows, m1_cols;
             cout << "Enter rows and columns of matrix 1: ";
             cin >> m1_rows >> m1_cols;
             //set matrix size limit
-            while((m1_rows > 100) || (m1_cols >100))
+            while((m1_rows > size_limit) || (m1_cols >size_limit))
             {   
-                printf("Matrix size limit exceed 100x100!\n");
-                printf("Enter rows and columns of matrix 1: ");
+                cout << ("Matrix size limit exceed 100x100!\n");
+                cout << ("Enter rows and columns of matrix 1: ");
                 cin >> m1_rows >> m1_cols;
             }
 
@@ -246,28 +252,29 @@ int main()
             Matrix m1 = Matrix(m1_rows,m1_cols);
             
             //Enter elements in matrix 1
-            printf("Enter elements of matrix 1:\n");
+            //printf("Enter elements of matrix 1:\n");
             m1.getElements();
-            m1.print_matrix();
+            //m1.print_matrix();
 
             //initialize matrix 2
             int m2_rows, m2_cols;
             cout << "Enter rows and columns of matrix 2: ";
             cin >> m2_rows >> m2_cols;
             //set matrix size limit
-            while((m2_rows > 100) || (m2_cols >100))
+            while((m2_rows > size_limit) || (m2_cols > size_limit))
             {   
-                printf("Matrix size limit exceed 100x100!\n");
-                printf("Enter rows and columns of matrix 2: ");
+                cout << ("Matrix size limit exceed 100x100!\n");
+                cout << ("Enter rows and columns of matrix 2: ");
                 cin >> m2_rows >> m2_cols;
+                
             }
             //dynamic allocation for matrix 2
             Matrix m2 = Matrix(m2_rows,m2_cols);
 
             //Enter elements in matrix 2
-            printf("Enter elements of matrix 2:\n");
+            //printf("Enter elements of matrix 2:\n");
             m2.getElements();
-            m2.print_matrix();
+            //m2.print_matrix();
         }
         //menu & operation selection
         print_menu();
