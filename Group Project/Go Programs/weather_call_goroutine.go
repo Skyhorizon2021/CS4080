@@ -8,8 +8,7 @@ import (
 	"time"
 )
 
-// const apiKey = "0936959823e12eb4246f3612f0ef7482";
-const apiKey = "6fad5235c96f6fc44f3e48dd6a3a3c40"
+const apiKey = "0936959823e12eb4246f3612f0ef7482"
 
 func fetchWeather(city string, ch1 chan<- string, wg *sync.WaitGroup) interface{} {
 	var data struct {
@@ -33,7 +32,7 @@ func fetchWeather(city string, ch1 chan<- string, wg *sync.WaitGroup) interface{
 		fmt.Printf("Error decoding weather data for %s: %s\n", city, err)
 	}
 
-	ch1 <- fmt.Sprintf("%s: ", city)
+	ch1 <- fmt.Sprintf(" %f", data.Main.Temp)
 	return data
 }
 
@@ -53,9 +52,11 @@ func main() {
 		wg.Wait()
 		close(ch1)
 	}()
-
+	count := 0
 	for res := range ch1 {
+		fmt.Printf("%s:", cities[count])
 		fmt.Println(res)
+		count += 1
 	}
 
 	fmt.Println("This operation took:", time.Since(timeStart))

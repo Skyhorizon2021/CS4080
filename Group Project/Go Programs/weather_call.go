@@ -9,8 +9,6 @@ import (
 
 const apiKey = "0936959823e12eb4246f3612f0ef7482"
 
-//const apiKey = "6fad5235c96f6fc44f3e48dd6a3a3c40"
-
 func fetchWeather(city string) interface{} {
 	var data struct {
 		Main struct {
@@ -36,7 +34,7 @@ func fetchWeather(city string) interface{} {
 
 func main() {
 	timeStart := time.Now()
-	cities := []string{"Tokyo,JP", "London,UK", "Sacramento,US","Beijing,CN","Rio de Janeiro,BR"}
+	cities := []string{"Tokyo,JP", "London,UK", "Sacramento,US", "Beijing,CN", "Rio de Janeiro,BR"}
 
 	for _, city := range cities {
 		data := fetchWeather(city)
