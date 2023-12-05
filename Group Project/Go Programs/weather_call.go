@@ -7,7 +7,9 @@ import (
 	"time"
 )
 
-const apiKey = "0936959823e12eb4246f3612f0ef7482"
+// apiKey has been ommitted to maintain security
+// Please obtain a key from OpenWeather API
+const apiKey = "secret"
 
 func fetchWeather(city string) interface{} {
 	var data struct {
