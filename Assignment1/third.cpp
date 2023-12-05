@@ -225,7 +225,7 @@ int main()
                 auto start = Clock::now();
                 productMatrix = m1 * m2;
                 auto end = Clock::now();
-                productMatrix.print_matrix();
+                //productMatrix.print_matrix();
                 
                 cout << "Execution time(ns): " << chrono::duration_cast<chrono::nanoseconds>(end-start).count()<<endl;
             }
@@ -257,7 +257,6 @@ int main()
             //m1.print_matrix();
 
             //initialize matrix 2
-            int m2_rows, m2_cols;
             cout << "Enter rows and columns of matrix 2: ";
             cin >> m2_rows >> m2_cols;
             //set matrix size limit

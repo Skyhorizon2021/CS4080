@@ -5,7 +5,7 @@ Program Purpose: Add, subtract, multiply 2 matrices using Class
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+
 
 public class fourth {
     public static void printMenu()
@@ -100,7 +100,7 @@ public class fourth {
                     product_matrix = m1.mulMatrix(m2);
                     long stopTime = System.nanoTime();
                     System.out.println("\nOutput Matrix:");
-                    product_matrix.printMatrix();
+                    //product_matrix.printMatrix();
                     long executionTime = stopTime - startTime;
                     System.out.println("Execution time(ns): "+executionTime);
                 }
@@ -183,11 +183,11 @@ class Matrix {
     //setter row and column
     public void setRow(int input_row)
     {
-        row = input_row;
+        this.row = input_row;
     }
     public void setCol(int input_col)
     {
-        col = input_col;
+        this.col = input_col;
     }
     //getter for matrix,row, and column
     public float[][] getMatrix()
@@ -207,19 +207,21 @@ class Matrix {
     {
         setRow(input_row);
         setCol(input_col);
-        a_matrix = new float[getRow()][getCol()];
+        this.a_matrix = new float[getRow()][getCol()];
     }
     //function to get or generate random elements
     public void getElements()
     {
         //Scanner userInput = new Scanner(System.in);
-        Random rand = new Random();   
+        Random rand = new Random();
+        float min = 1;
+        float max = 100;   
         for(int i=0;i<getRow();i++)
         {
             for(int j=0;j<getCol();j++)
             {
                 //getMatrix()[i][j] = userInput.nextFloat();
-                getMatrix()[i][j] = rand.nextFloat(1,100);
+                getMatrix()[i][j] = min + rand.nextFloat() * (max-min);
             }
         }
     }

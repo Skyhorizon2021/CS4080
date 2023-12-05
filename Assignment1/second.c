@@ -210,8 +210,8 @@ int main()
                 end = res.tv_nsec;
                 // timeEnd = clock();
                 // executionTime = ((double)(timeEnd - timeStart)) / CLOCKS_PER_SEC;
-                printf("\nOutput Matrix:\n");
-                print_matrix(m1_rows,m2_cols,product_matrix);
+                //printf("\nOutput Matrix:\n");
+                //print_matrix(m1_rows,m2_cols,product_matrix);
                 printf("Execution time(ns): %lu",end-start);
             }
             else
@@ -224,7 +224,6 @@ int main()
         else if(choice == 4)
         {
             //initialize matrix 1
-            int m1_rows, m1_cols;
             printf("Enter rows and columns of matrix 1: ");
             scanf("%d %d", &m1_rows, &m1_cols);
             //set matrix size limit
@@ -244,11 +243,10 @@ int main()
             //Enter elements in matrix 1
             //printf("Enter elements of matrix 1:\n");
             getELements(m1_rows,m1_cols,&m1);
-            printf("\nMatrix 1:\n");
-            print_matrix(m1_rows,m1_cols,m1);
+            // printf("\nMatrix 1:\n");
+            // print_matrix(m1_rows,m1_cols,m1);
             
             //initialize matrix 2
-            int m2_rows, m2_cols;
             printf("Enter rows and columns of matrix 2: ");
             scanf("%d %d", &m2_rows, &m2_cols);
             //set matrix size limit      
@@ -266,10 +264,10 @@ int main()
             }
 
             //Enter elements in matrix 2
-            printf("Enter elements of matrix 2:\n");
+            // printf("Enter elements of matrix 2:\n");
             getELements(m2_rows,m2_cols,&m2);
-            printf("\nMatrix 2:\n");
-            print_matrix(m2_rows,m2_cols,m2);
+            // printf("\nMatrix 2:\n");
+            // print_matrix(m2_rows,m2_cols,m2);
             
         }
         //menu & operation selection
